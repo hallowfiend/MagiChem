@@ -21,6 +21,7 @@
           { "item": "magichem:essentia_precious", "count": 20 },
           { "item": "magichem:essentia_wrought", "count": 4},
           { "item": "magichem:admixture_witchcraft", "count": 4 },
+          { "item": "magichem:admixture_vessel", "count": 4 },
           { "item": "magichem:admixture_spirit", "count": 8 }
         ]
       }
