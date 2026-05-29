@@ -1,0 +1,87 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "goety"
+                }
+            ],
+            "recipe": {
+                "type": "magichem:sublimation",
+                "tier": 3,
+                "wisdom": 4,
+                "required_advancement": "goety:kill_a_apostle",
+                "object": {
+                    "item": "goety:unholy_blood",
+                    "count": 2
+                },
+                "stages": [
+                    {
+                        "experience": 0,
+                        "components": [
+                            {
+                                "item": "goety:shadow_essence"
+                            },
+                            {
+                                "item": "goety:forbidden_piece"
+                            },
+                            {
+                                "item": "goety:hunger_core"
+                            },
+                            {
+                                "item": "goety:warlock_sash"
+                            }
+                        ],
+                        "materia": [
+                            {
+                                "item": "magichem:admixture_curse",
+                                "count": 24
+                            },
+                            {
+                                "item": "magichem:admixture_blood",
+                                "count": 66
+                            },
+                            {
+                                "item": "magichem:admixture_demon",
+                                "count": 16
+                            }
+                        ]
+                    },
+                    {
+                        "experience": 0,
+                        "components": [
+                            {
+                                "item": "minecraft:water_bucket"
+                            },
+                            {
+                                "item": "goety:tidal_focus"
+                            },
+                            {
+                                "item": "mna:satchet_water"
+                            },
+                            {
+                                "item": "goety:fanged_dagger"
+                            }
+                        ],
+                        "materia": [
+                            {
+                                "item": "magichem:admixture_spirit",
+                                "count": 66
+                            },
+                            {
+                                "item": "magichem:admixture_sorcery",
+                                "count": 8
+                            },
+                            {
+                                "item": "magichem:admixture_potential",
+                                "count": 24
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
