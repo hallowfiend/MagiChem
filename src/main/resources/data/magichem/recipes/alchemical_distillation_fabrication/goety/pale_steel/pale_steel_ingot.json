@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "goety"
+        }
+      ],
+      "recipe": {
+        "type": "magichem:distillation_fabrication",
+        "wisdom": 2,
+        "categories": 1,
+        "output_rate": 1.0,
+        "batch_size": 16,
+        "object": {
+          "item": "goety:pale_steel_ingot"
+        },
+        "components": [
+          { "item": "magichem:admixture_metal", "count": 5 },
+          { "item": "magichem:admixture_violence", "count": 2 },
+          { "item": "magichem:admixture_industry", "count": 1 },
+          { "item": "magichem:admixture_cold", "count": 1 }
+        ]
+      }
+    }
+  ]
+}
