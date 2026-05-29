@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "goety"
+        }
+      ],
+      "recipe": {
+        "type": "magichem:distillation_fabrication",
+        "wisdom": 2,
+        "categories": 1,
+        "output_rate": 1.0,
+        "batch_size": 16,
+        "required_advancement": "goety:kill_a_wraith",
+        "object": {
+          "item": "goety:ectoplasm"
+        },
+        "components": [
+          { "item": "magichem:admixture_spirit", "count": 2 },
+          { "item": "magichem:admixture_filth", "count": 4 }
+        ]
+      }
+    }
+  ]
+}
