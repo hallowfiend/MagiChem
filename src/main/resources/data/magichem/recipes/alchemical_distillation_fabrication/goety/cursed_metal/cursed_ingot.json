@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "goety"
+        }
+      ],
+      "recipe": {
+        "type": "magichem:distillation_fabrication",
+        "wisdom": 2,
+        "categories": 1,
+        "output_rate": 1.0,
+        "batch_size": 16,
+        "required_advancement": "goety:craft_cursed_ingot",
+        "object": {
+          "item": "goety:cursed_ingot"
+        },
+        "components": [
+          { "item": "magichem:admixture_metal", "count": 5 },
+          { "item": "magichem:admixture_spirit", "count": 1 },
+          { "item": "magichem:admixture_curse", "count": 3 }
+        ]
+      }
+    }
+  ]
+}
