@@ -16,7 +16,7 @@
         "batch_size": 16,
         "required_advancement": "goety:craft_dark_robe",
         "object": {
-          "item": "goety:dark_ingot"
+          "item": "goety:dark_fabric"
         },
         "components": [
           { "item": "magichem:essentia_wrought", "count": 2 },
