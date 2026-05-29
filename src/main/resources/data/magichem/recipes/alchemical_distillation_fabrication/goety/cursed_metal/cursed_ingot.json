@@ -14,7 +14,7 @@
         "categories": 1,
         "output_rate": 1.0,
         "batch_size": 16,
-        "required_advancement": "goety:craft_cursed_ingot",
+        "required_advancement": "goety/goety:craft_cursed_ingot",
         "object": {
           "item": "goety:cursed_ingot"
         },
