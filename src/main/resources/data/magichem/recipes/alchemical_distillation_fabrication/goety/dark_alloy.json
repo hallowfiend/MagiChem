@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "goety"
+        }
+      ],
+      "recipe": {
+        "type": "magichem:distillation_fabrication",
+        "wisdom": 2,
+        "categories": 1,
+        "output_rate": 1.0,
+        "batch_size": 16,
+        "required_advancement": "goety:craft_dark_ingot",
+        "object": {
+          "item": "goety:dark_ingot"
+        },
+        "components": [
+          { "item": "magichem:admixture_metal", "count": 6 },
+          { "item": "magichem:admixture_curse", "count": 6 },
+          { "item": "magichem:admixture_darkness", "count": 6 },
+          { "item": "magichem:admixture_exanimate", "count": 6 },
+          { "item": "magichem:essentia_nigredo", "count": 6 }
+        ]
+      }
+    }
+  ]
+}
