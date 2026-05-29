@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "goety"
+        }
+      ],
+      "recipe": {
+        "type": "magichem:distillation_fabrication",
+        "wisdom": 2,
+        "categories": 1,
+        "output_rate": 1.0,
+        "batch_size": 16,
+        "required_advancement": "goety:craft_dark_robe",
+        "object": {
+          "item": "goety:gale_fabric"
+        },
+        "components": [
+          { "item": "magichem:essentia_wrought", "count": 2 },
+          { "item": "magichem:admixture_comfort", "count": 2 },
+          { "item": "magichem:essentia_air", "count": 8 }
+        ]
+      }
+    }
+  ]
+}
