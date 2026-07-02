@@ -199,7 +199,21 @@ public class CommonEventHandler {
                 event.setCanceled(true);
             }
         }
-        if(target instanceof AbstractMateriaStorageSingleTypeBlockEntity amsbe) {
+        if(target instanceof ICanHaveUnbottledMateriaInInputTray clogQuery) {
+            if(!stack.isEmpty() && stack.getItem() == Items.GLASS_BOTTLE && clogQuery.isClogged()) {
+                if(!event.getLevel().isClientSide()) {
+                    ItemStack extracted = clogQuery.tryExtractUnbottled(stack);
+                    if (!extracted.isEmpty()) {
+                        ItemEntity ie = new ItemEntity(event.getLevel(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), extracted);
+                        event.getLevel().addFreshEntity(ie);
+
+                        event.setCancellationResult(InteractionResult.CONSUME);
+                        event.setCanceled(true);
+                    }
+                }
+            }
+        }
+        else if(target instanceof AbstractMateriaStorageSingleTypeBlockEntity amsbe) {
             if(stack.getItem() == Items.GLASS_BOTTLE) {
                 if(amsbe.getMateriaType() != null) {
                     ItemStack extracted = amsbe.extractMateria(stack.getCount(), false);
@@ -841,17 +855,29 @@ public class CommonEventHandler {
                         MobEffectInstance effect = event.getEffectInstance();
 
                         if(cap.getHeart() == IEnhancementCapability.EnhancedHeartType.IMMORTAL) {
-                            if(isPendingEffect(player, effect.getEffect()) || effect.getDuration() == -1) {
-                                removeFromPendingEffects(player, effect.getEffect());
-                            } else {
-                                if (effect.getEffect().getCategory() == MobEffectCategory.BENEFICIAL) {
-                                    event.setResult(Event.Result.DENY);
-                                    addToPendingEffects(player, effect.getEffect());
-                                    player.addEffect(new MobEffectInstance(effect.getEffect(), effect.getDuration() * 3, effect.getAmplifier(), effect.isAmbient(), effect.isVisible(), effect.showIcon()));
-                                } else if (effect.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
-                                    event.setResult(Event.Result.DENY);
-                                    addToPendingEffects(player, effect.getEffect());
-                                    player.addEffect(new MobEffectInstance(effect.getEffect(), effect.getDuration() / 3, effect.getAmplifier(), effect.isAmbient(), effect.isVisible(), effect.showIcon()));
+                            boolean onBlacklist = false;
+                            for(int i=0; i<IEnhancementCapability.BLACKLIST.length; i++) {
+                                if(effect.getEffect().getCategory() == MobEffectCategory.HARMFUL) continue;
+
+                                String query = effect.getEffect().getDescriptionId();
+                                if(query.equals(IEnhancementCapability.BLACKLIST[i])) {
+                                    onBlacklist = true;
+                                    break;
+                                }
+                            }
+                            if(!onBlacklist){
+                                if (isPendingEffect(player, effect.getEffect()) || effect.getDuration() == -1) {
+                                    removeFromPendingEffects(player, effect.getEffect());
+                                } else {
+                                    if (effect.getEffect().getCategory() == MobEffectCategory.BENEFICIAL) {
+                                        event.setResult(Event.Result.DENY);
+                                        addToPendingEffects(player, effect.getEffect());
+                                        player.addEffect(new MobEffectInstance(effect.getEffect(), effect.getDuration() * 3, effect.getAmplifier(), effect.isAmbient(), effect.isVisible(), effect.showIcon()));
+                                    } else if (effect.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+                                        event.setResult(Event.Result.DENY);
+                                        addToPendingEffects(player, effect.getEffect());
+                                        player.addEffect(new MobEffectInstance(effect.getEffect(), effect.getDuration() / 3, effect.getAmplifier(), effect.isAmbient(), effect.isVisible(), effect.showIcon()));
+                                    }
                                 }
                             }
                         }
