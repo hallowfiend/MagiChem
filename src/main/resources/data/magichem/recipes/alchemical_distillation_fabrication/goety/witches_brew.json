@@ -18,7 +18,7 @@
           "item": "goety:witches_brew"
         },
         "components": [
-          { "item": "magichem:admixture_memory", "count": 12 },
+          { "item": "magichem:essentia_water", "count": 12 },
           { "item": "magichem:admixture_witchcraft", "count": 4 },
           { "item": "magichem:admixture_spirit", "count": 6 },
           { "item": "magichem:admixture_swamps", "count": 2 }
